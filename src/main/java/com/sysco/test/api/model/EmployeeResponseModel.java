@@ -1,7 +1,5 @@
 package com.sysco.test.api.model;
 import java.util.List;
-
-import com.amazonaws.services.athena.model.Datum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -19,19 +17,20 @@ public class EmployeeResponseModel {
      * No args constructor for use in serialization
      *
      */
-//    public ProjectModel() {
-//    }
+    public EmployeeResponseModel() {
+    }
     /**
      *
      * @param data
      * @param status
      */
-    public EmployeeResponseModel(String status, List<Datum> data) {
+    public EmployeeResponseModel (String status, List<Datum> data) {
         super();
         this.status = status;
         this.data = data;
     }
 }
+
 
 
 

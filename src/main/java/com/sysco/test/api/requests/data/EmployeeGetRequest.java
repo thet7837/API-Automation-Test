@@ -1,30 +1,37 @@
 package com.sysco.test.api.requests.data;
-import java.util.List;
-
-import com.amazonaws.services.athena.model.Datum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.syscolab.qe.core.api.request.RequestBase;
+import java.util.ArrayList;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "status",
         "data"
 })
-public class EmployeeGetRequest {
+
+public class EmployeeGetRequest extends RequestBase {
+
     @JsonProperty("status")
     public String status;
 
 
+    /**
+     * No args constructor for use in serialization
+     *
+     */
     public EmployeeGetRequest() {
     }
+
     /**
      *
      * @param status
      */
-    public EmployeeGetRequest (String status, List<Datum> data) {
+    public EmployeeGetRequest(String status) {
         super();
         this.status = status;
 
     }
-}
 
+}
