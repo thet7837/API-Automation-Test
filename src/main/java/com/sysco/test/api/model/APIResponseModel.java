@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "employee_age",
         "profile_image"
 })
-public class Datum {
+public class APIResponseModel {
     @JsonProperty("id")
     public String id;
     @JsonProperty("employee_name")
@@ -26,7 +26,7 @@ public class Datum {
      * No args constructor for use in serialization
      *
      */
-    public Datum() {
+    public APIResponseModel() {
     }
     /**
      *
@@ -36,7 +36,7 @@ public class Datum {
      * @param profileImage
      * @param employeeSalary
      */
-    public Datum(String id, String employeeName, String employeeSalary, String employeeAge, String profileImage) {
+    public APIResponseModel(String id, String employeeName, String employeeSalary, String employeeAge, String profileImage) {
         super();
         this.id = id;
         this.employeeName = employeeName;

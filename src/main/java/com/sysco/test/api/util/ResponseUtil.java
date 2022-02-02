@@ -2,8 +2,9 @@ package com.sysco.test.api.util;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.restassured.response.Response;
+
 import com.syscolab.qe.core.common.LoggerUtil;
+import io.restassured.response.Response;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,18 +38,5 @@ public class ResponseUtil {
         }
         return null;
     }
-//public static Object getDataObjectValueInDataArray(String response, int dataArrayIndex, Class c) throws JSONException {
-//    String json = response;
-//
-//
-//    String toReturn ="";
-//    try {
-//        JSONObject responseBody = json.getJSONObject(dataArrayIndex);;
-//        return new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).readValue(responseBody.toString(), c);
-//
-//    }catch (Exception e){
-//        e.getMessage();
-//    }
-//    return null;
-//}
+
 }
