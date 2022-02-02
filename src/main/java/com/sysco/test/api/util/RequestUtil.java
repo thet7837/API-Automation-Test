@@ -1,8 +1,9 @@
 package com.sysco.test.api.util;
 
-import com.jayway.restassured.response.Response;
+
 import com.sysco.test.api.common.Constant;
 import com.syscolab.qe.core.api.restassured.RestUtil;
+import io.restassured.response.Response;
 
 import java.util.Map;
 

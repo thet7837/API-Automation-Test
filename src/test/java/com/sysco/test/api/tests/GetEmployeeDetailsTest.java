@@ -1,10 +1,13 @@
 package com.sysco.test.api.tests;
 
-import com.jayway.restassured.response.Response;
-import com.sysco.test.api.requests.functions.APIEmployeeFunction;
+
+import com.sysco.test.api.common.AssertErrorMessages;
+import com.sysco.test.api.common.StatusCode;
 import com.sysco.test.api.model.EmployeeResponseModel;
+import com.sysco.test.api.requests.data.EmployeeData;
+import com.sysco.test.api.requests.functions.APIEmployeeFunction;
 import com.sysco.test.api.util.ResponseUtil;
-import org.json.JSONException;
+import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -13,23 +16,17 @@ public class GetEmployeeDetailsTest {
     private static SoftAssert softAssert;
 
     @Test
-    public static void testGetProject() throws JSONException {
-//        softAssert = new SoftAssert();
-//        Response projectList = APIEmployeeFunction.getEmployeeResponse();
-//        EmployeeResponseModel responseModel = (EmployeeResponseModel) ResponseUtil.getDataObjectValueInDataArray(projectList.asString(), 1, EmployeeResponseModel.class);
-//        softAssert.assertEquals(ResponseUtil.getStatus(projectList), StatusCode.SUCCESS_200_CODE, "Status code should be 200");
-//        Assert.assertEquals(responseModel.status, 1, "Should be equal");
-//        softAssert.assertAll();
+    public static void testGetProject() {
 
         softAssert = new SoftAssert();
-        Response projectList = APIEmployeeFunction.getEmployeeResponse();
-        EmployeeResponseModel  responseModel = (EmployeeResponseModel)ResponseUtil.getObject(projectList.asString(), EmployeeResponseModel.class);
-        softAssert.assertEquals(responseModel.status, "success", "Status is failed");
-        softAssert.assertEquals(responseModel.data.get(0).id, "1", "Employee ID is incorrect");
-        softAssert.assertEquals(responseModel.data.get(0).employeeName, "Tiger Nixon", "Employee name is incorrect");
-        softAssert.assertEquals(responseModel.data.get(0).employeeSalary, "320800", "Employee salary it incorrect");
-        softAssert.assertEquals(responseModel.data.get(0).employeeAge, "61", "Employee age is incorrect");
-        softAssert.assertEquals(responseModel.data.get(0).profileImage, "", "profile image not loaded");
+        Response urlResponse = APIEmployeeFunction.getEmployeeResponse();
+        EmployeeResponseModel responseModel = (EmployeeResponseModel) ResponseUtil.getObject(urlResponse.asString(), EmployeeResponseModel.class);
+        softAssert.assertEquals(responseModel.status, StatusCode.SUCCESS_200_CODE, AssertErrorMessages.INVALID_STATUS_CODE);
+        softAssert.assertEquals(responseModel.data.get(0).id, EmployeeData.EMPLOYEE_ID, AssertErrorMessages.INVALID_EMPLOYEE_ID);
+        softAssert.assertEquals(responseModel.data.get(0).employeeName, EmployeeData.EMPLOYEE_NAME, AssertErrorMessages.INVALID_EMPLOYEE_NAME);
+        softAssert.assertEquals(responseModel.data.get(0).employeeSalary, EmployeeData.EMPLOYEE_SALARY, AssertErrorMessages.INVALID_EMPLOYEE_SALARY);
+        softAssert.assertEquals(responseModel.data.get(0).employeeAge, EmployeeData.EMPLOYEE_AGE, AssertErrorMessages.INVALID_EMPLOYEE_AGE);
+        softAssert.assertEquals(responseModel.data.get(0).profileImage, EmployeeData.EMPLOYEE_IMAGE, AssertErrorMessages.INVALID_EMPLOYEE_IMAGE);
 
         softAssert.assertAll();
     }

@@ -12,7 +12,7 @@ public class EmployeeResponseModel {
     @JsonProperty("status")
     public String status;
     @JsonProperty("data")
-    public List<Datum> data = null;
+    public List<APIResponseModel> data = null;
     /**
      * No args constructor for use in serialization
      *
@@ -24,7 +24,7 @@ public class EmployeeResponseModel {
      * @param data
      * @param status
      */
-    public EmployeeResponseModel (String status, List<Datum> data) {
+    public EmployeeResponseModel (String status, List<APIResponseModel> data) {
         super();
         this.status = status;
         this.data = data;
