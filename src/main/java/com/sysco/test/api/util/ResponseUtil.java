@@ -2,7 +2,6 @@ package com.sysco.test.api.util;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.syscolab.qe.core.common.LoggerUtil;
 import io.restassured.response.Response;
 import org.json.JSONArray;
@@ -12,8 +11,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class ResponseUtil {
-    public static int getStatus(Response response){
-        return  response.getStatusCode();
+    public static int getStatus(Response response) {
+        return response.getStatusCode();
     }
 
 
@@ -38,5 +37,15 @@ public class ResponseUtil {
         }
         return null;
     }
+    public static <R> Object getResponseAsObject(String response, Class<R> classType) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
+        try {
+            return mapper.readValue(response, classType);
+        } catch (IOException var4) {
+            LoggerUtil.logINFO(var4.getMessage());
+            return null;
+        }
+    }
 }

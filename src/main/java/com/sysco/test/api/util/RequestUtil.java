@@ -14,6 +14,7 @@ public class RequestUtil {
         RestUtil.API_HOST = Constant.API_HOST;
 
     }
+
     public static Response send(Map<String, String> headers, String bodyString, String uri, String requestMethod, Map<String, String> queryParameters) {
         return RestUtil.send(headers, bodyString, uri, requestMethod, queryParameters);
 

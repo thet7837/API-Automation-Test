@@ -13,13 +13,16 @@ import java.util.List;
 
 public class JacksonUtil {
 
+    JacksonUtil() {
+    }
+
     public static <T> List<T> getObjectArray(String response, Class<?> c) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
             TypeFactory typeFactory = mapper.getTypeFactory();
             CollectionType collectionType = typeFactory.constructCollectionType(List.class, c);
-            return (List)mapper.readValue(response, collectionType);
+            return mapper.readValue(response, collectionType);
         } catch (IOException var5) {
             LoggerUtil.logERROR(var5.getMessage(), var5);
             return Collections.emptyList();
@@ -33,8 +36,5 @@ public class JacksonUtil {
             LoggerUtil.logERROR(var2.getMessage(), var2);
             return "";
         }
-    }
-
-    JacksonUtil() {
     }
 }

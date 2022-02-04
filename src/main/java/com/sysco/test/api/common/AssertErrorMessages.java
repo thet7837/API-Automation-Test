@@ -6,7 +6,7 @@ public class AssertErrorMessages {
     public static final String INVALID_EMPLOYEE_NAME = "Invalid Employee Name";
     public static final String INVALID_EMPLOYEE_SALARY = "Invalid Employee Salary";
     public static final String INVALID_EMPLOYEE_AGE = "Invalid Employee Age";
-    public static final String INVALID_EMPLOYEE_IMAGE= "Invalid Employee Image";
+    public static final String INVALID_EMPLOYEE_IMAGE = "Invalid Employee Image";
 
 
 }

@@ -13,7 +13,7 @@ public class FileOperationsUtils {
             File myObj = new File(filePath + fileName);
             Scanner myReader = new Scanner(myObj);
 
-            while(myReader.hasNextLine()) {
+            while (myReader.hasNextLine()) {
                 data.append(myReader.nextLine());
             }
 
